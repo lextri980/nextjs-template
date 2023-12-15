@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import exampleReducer from "./reducers/exampleReducer";
+import exampleReducer from "./ExampleStore/ExampleReducer";
 
 export const rootReducer = combineReducers({
   example: exampleReducer,
