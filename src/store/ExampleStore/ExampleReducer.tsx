@@ -1,15 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ExampleInterface } from "./interface";
+import { IExample } from "./interface";
 
-const initialState: ExampleInterface = {
+const initialState: IExample = {
   state: true,
 };
 
 const ExampleReducer = createSlice({
-  name: "ExampleReducer",
+  name: "example",
   initialState,
   reducers: {
-    example: (state, action) => {},
+    exampleAction: (state, action) => {
+      console.log(state, action);
+    },
   },
 });
 

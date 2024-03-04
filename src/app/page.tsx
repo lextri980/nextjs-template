@@ -1,7 +1,21 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import Image from "next/image";
+import { useEffect } from "react";
+import styles from "./page.module.css";
+import { ExampleActions } from "@/store/ExampleStore/ExampleReducer";
 
 export default function Home() {
+  const exampleState = useAppSelector((state) => state.example);
+  const dispatch = useAppDispatch();
+
+  console.log(exampleState);
+
+  useEffect(() => {
+    console.log('first')
+    dispatch(ExampleActions.exampleAction("payload"));
+  }, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -15,7 +29,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -91,5 +105,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
