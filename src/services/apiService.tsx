@@ -1,36 +1,26 @@
 import { getCookie, removeManyStorage, setLocal } from "@/utils";
-import axios from "axios";
+import axios, { InternalAxiosRequestConfig } from "axios";
 
 const apiService = axios.create({
   baseURL: process.env.BASE_URL,
   timeout: 20000,
+  headers: {
+    Accept: "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
 });
 
-const defaultHeader = {
-  Accept: "application/json",
-  "Access-Control-Allow-Origin": "*",
-  "Content-Type": "application/x-www-form-urlencoded",
-};
-
 apiService.interceptors.request.use(
-  (config: any) => {
+  (config: InternalAxiosRequestConfig) => {
     let token;
     const authenCookie = getCookie("token");
     if (localStorage["token"]) {
       token = localStorage["token"];
-      config.headers = {
-        ...defaultHeader,
-        Authorization: `Bearer ${token}`,
-      };
     } else if (authenCookie && authenCookie !== "") {
       token = authenCookie;
-      config.headers = {
-        ...defaultHeader,
-        Authorization: `Bearer ${token}`,
-      };
-    } else {
-      config.headers = { ...defaultHeader };
     }
+    config.headers.Authorization = token;
     return config;
   },
   (error) => Promise.reject(error)
