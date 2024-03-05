@@ -3,7 +3,7 @@ import { ExampleActions } from "./ExampleReducer";
 
 export function* exampleWatcher() {
   yield all([
-    takeLatest(ExampleActions.example.type, getExampleWorker),
+    takeLatest(ExampleActions.exampleAction.type, getExampleWorker),
     // takeLatest(ExampleActions.example.type, getExampleWorker),
   ]);
 }
