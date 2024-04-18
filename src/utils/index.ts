@@ -1,17 +1,3 @@
-import {
-  getCookie,
-  getLocal,
-  removeManyStorage,
-  removeStorage,
-  setCookie,
-  setLocal,
-} from "./storageUtil";
+import StorageUtil from "./storageUtil";
 
-export {
-  getCookie,
-  getLocal,
-  removeManyStorage,
-  removeStorage,
-  setCookie,
-  setLocal,
-};
+export { StorageUtil };

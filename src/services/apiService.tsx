@@ -1,58 +1,120 @@
-import { getCookie, removeManyStorage, setLocal } from "@/utils";
-import axios, { InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
-const apiService = axios.create({
-  baseURL: process.env.BASE_URL,
-  timeout: 20000,
-  headers: {
-    Accept: "application/json",
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "application/x-www-form-urlencoded",
-  },
-});
+// Định nghĩa loại dữ liệu phản hồi từ API
+type ApiResponse<T> = {
+  message: boolean;
+  statusCode: number;
+  data: T;
+};
 
-apiService.interceptors.request.use(
-  (config: InternalAxiosRequestConfig) => {
-    let token;
-    const authenCookie = getCookie("token");
-    if (localStorage["token"]) {
-      token = localStorage["token"];
-    } else if (authenCookie && authenCookie !== "") {
-      token = authenCookie;
-    }
-    config.headers.Authorization = token;
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+class ApiService {
+  private static instance: ApiService;
+  private axiosInstance: AxiosInstance;
+  private accessToken: string | null = null;
+  private refreshToken: string | null = null;
 
-// Response interceptor for API calls
-apiService.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // const originalRequest = error.config;
-    // This uses for refresh token
-    // if (error.response.status === 403 && !originalRequest._retry) {
-    //   originalRequest._retry = true;
-    //   const access_token = await refreshAccessToken();
-    //   axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
-    //   return axiosApiInstance(originalRequest);
-    // }
-    switch (error.response.status) {
-      case 401:
-        removeManyStorage(["token", "user"]);
-        // store.dispatch(logoutRequest());
-        window.location.pathname = "/auth/login";
-        setLocal("unauthorized", JSON.stringify(error.response));
-        break;
-      case 500:
-        console.log("in");
-        break;
-      default:
-        break;
-    }
-    return Promise.reject(error);
+  private constructor() {
+    this.axiosInstance = axios.create({
+      baseURL: "https://jsonplaceholder.typicode.com/", // Thay đổi thành URL thực tế của bạn
+    });
   }
-);
 
-export default apiService;
+  static getInstance(): ApiService {
+    if (!ApiService.instance) {
+      ApiService.instance = new ApiService();
+    }
+    return ApiService.instance;
+  }
+
+  async setAccessToken(token: string) {
+    this.accessToken = token;
+  }
+
+  async setRefreshToken(token: string) {
+    this.refreshToken = token;
+  }
+
+  async get<T>(endpoint: string): Promise<ApiResponse<T>> {
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() => this.axiosInstance.get(endpoint));
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async post<T>(endpoint: string, data: any): Promise<ApiResponse<T>> {
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() =>
+          this.axiosInstance.post(endpoint, data)
+        );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async put<T>(endpoint: string, data: any): Promise<ApiResponse<T>> {
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() =>
+          this.axiosInstance.put(endpoint, data)
+        );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async delete<T>(endpoint: string): Promise<ApiResponse<T>> {
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() =>
+          this.axiosInstance.delete(endpoint)
+        );
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private async requestWithRetry<T>(
+    requestFunction: () => Promise<AxiosResponse<ApiResponse<T>>>
+  ): Promise<AxiosResponse<ApiResponse<T>>> {
+    try {
+      const response = await requestFunction();
+      return response;
+    } catch (error: any) {
+      // Kiểm tra nếu lỗi có liên quan đến accessToken hết hạn
+      if (
+        error.response &&
+        error.response.status === 401 &&
+        error.response.data.message === "Token expired"
+      ) {
+        // Nếu accessToken hết hạn, ta có thể thực hiện quá trình refresh token ở đây
+        await this.refreshAccessToken();
+        // Sau khi refreshToken thành công, thực hiện lại yêu cầu gọi API
+        return await requestFunction();
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  private async refreshAccessToken() {
+    // Gửi yêu cầu refresh token và cập nhật accessToken mới
+    try {
+      const response = await this.axiosInstance.post("/refreshToken", {
+        refreshToken: this.refreshToken,
+      });
+      const newAccessToken = response.data.accessToken;
+      this.setAccessToken(newAccessToken);
+    } catch (error) {
+      throw new Error("Failed to refresh access token");
+    }
+  }
+}
+
+export default ApiService.getInstance();

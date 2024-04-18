@@ -1,3 +1,3 @@
-import apiService from "./apiService";
+import ApiService from "./apiService";
 
-export { apiService };
+export { ApiService };

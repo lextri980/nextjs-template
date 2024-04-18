@@ -1,40 +1,44 @@
-export const getLocal = (item: string) => {
-  const localItem = localStorage.getItem(item);
-  return localItem;
-};
+export default class StorageUtil {
+  constructor() {}
 
-export const setLocal = (itemName: string, item: any) => {
-  localStorage.setItem(itemName, item);
-};
-
-export const getCookie = (item: string) => {
-  let name = item + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let splitedCookie = decodedCookie.split(";");
-  for (let i = 0; i < splitedCookie.length; i++) {
-    let cookie = splitedCookie[i];
-    while (cookie.charAt(0) == " ") {
-      cookie = cookie.substring(1);
-    }
-    if (cookie.indexOf(name) == 0) {
-      return cookie.substring(name.length, cookie.length);
-    }
+  getLocal(item: string) {
+    const localItem = localStorage.getItem(item);
+    return localItem;
   }
-  return "";
-};
 
-export const setCookie = (itemName: string, item: any) => {
-  document.cookie = `${itemName}=${item}`;
-};
+  setLocal = (itemName: string, item: any) => {
+    localStorage.setItem(itemName, item);
+  };
 
-export const removeStorage = (item: string) => {
-  localStorage.removeItem(item);
-  document.cookie = `${item}=`;
-};
+  getCookie = (item: string) => {
+    let name = item + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let splitedCookie = decodedCookie.split(";");
+    for (let i = 0; i < splitedCookie.length; i++) {
+      let cookie = splitedCookie[i];
+      while (cookie.charAt(0) == " ") {
+        cookie = cookie.substring(1);
+      }
+      if (cookie.indexOf(name) == 0) {
+        return cookie.substring(name.length, cookie.length);
+      }
+    }
+    return "";
+  };
 
-export const removeManyStorage = (array: string[]) => {
-  array.forEach((item) => {
+  setCookie = (itemName: string, item: any) => {
+    document.cookie = `${itemName}=${item}`;
+  };
+
+  removeStorage = (item: string) => {
     localStorage.removeItem(item);
     document.cookie = `${item}=`;
-  });
-};
+  };
+
+  removeManyStorage = (array: string[]) => {
+    array.forEach((item) => {
+      localStorage.removeItem(item);
+      document.cookie = `${item}=`;
+    });
+  };
+}
