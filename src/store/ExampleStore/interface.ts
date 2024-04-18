@@ -1,3 +1,3 @@
-export interface ExampleInterface {
+export interface IExample {
   state: boolean;
 }

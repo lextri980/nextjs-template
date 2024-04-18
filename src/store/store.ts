@@ -5,12 +5,17 @@ import rootSaga from "./rootSaga";
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: new MiddlewareArray(sagaMiddleware),
-});
+export const store = () => {
+  const initStore = configureStore({
+    reducer: rootReducer,
+    middleware: new MiddlewareArray(sagaMiddleware),
+  });
+  sagaMiddleware.run(rootSaga);
+  return initStore;
+};
 
-sagaMiddleware.run(rootSaga);
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+// Infer the type of store
+export type AppStore = ReturnType<typeof store>;
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];
