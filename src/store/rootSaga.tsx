@@ -4,6 +4,6 @@ import { exampleWatcher } from "./exampleStore/ExampleSaga";
 export default function* reduxSaga() {
   yield all([
     fork(exampleWatcher),
-    // fork(exampleWatcher),
+    // fork(anotherWatcher),
   ]);
 }

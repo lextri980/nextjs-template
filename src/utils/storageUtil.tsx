@@ -1,16 +1,14 @@
 export default class StorageUtil {
-  constructor() {}
-
-  getLocal(item: string) {
+  static getLocal(item: string): string | null {
     const localItem = localStorage.getItem(item);
     return localItem;
   }
 
-  setLocal = (itemName: string, item: any) => {
+  static setLocal = (itemName: string, item: any) => {
     localStorage.setItem(itemName, item);
   };
 
-  getCookie = (item: string) => {
+  static getCookie = (item: string) => {
     let name = item + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let splitedCookie = decodedCookie.split(";");
@@ -26,16 +24,16 @@ export default class StorageUtil {
     return "";
   };
 
-  setCookie = (itemName: string, item: any) => {
+  static setCookie = (itemName: string, item: any) => {
     document.cookie = `${itemName}=${item}`;
   };
 
-  removeStorage = (item: string) => {
+  static removeStorage = (item: string) => {
     localStorage.removeItem(item);
     document.cookie = `${item}=`;
   };
 
-  removeManyStorage = (array: string[]) => {
+  static removeManyStorage = (array: string[]) => {
     array.forEach((item) => {
       localStorage.removeItem(item);
       document.cookie = `${item}=`;

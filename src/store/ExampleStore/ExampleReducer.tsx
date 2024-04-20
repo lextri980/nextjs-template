@@ -9,9 +9,12 @@ const ExampleReducer = createSlice({
   name: "example",
   initialState,
   reducers: {
-    exampleAction: (state, action) => {
+    exampleAction(state, action) {
       console.log(state, action);
     },
+    getPostRequest(state) {},
+    getPostSucess(state, action) {},
+    getPostFail(state, action) {},
   },
 });
 
