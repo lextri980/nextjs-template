@@ -1,3 +1,135 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "next/typescript",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "jsdoc", "filenames"],
+  "rules": {
+    "no-trailing-spaces": "warn",
+    "no-multi-spaces": "warn",
+    "unicode-bom": "error",
+    "no-duplicate-imports": "error",
+    "no-alert": "error",
+    "no-console": "warn",
+    "no-debugger": "error",
+    "no-unused-vars": "off",
+    "no-throw-literal": "error",
+    "no-irregular-whitespace": [
+      "error",
+      {
+        "skipStrings": true,
+        "skipComments": true,
+        "skipRegExps": true,
+        "skipTemplates": true
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "memberLike",
+        "modifiers": ["private"],
+        "format": ["camelCase"]
+      }
+    ],
+    "jsdoc/require-jsdoc": [
+      "warn",
+      {
+        "require": {
+          "FunctionDeclaration": false,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": true,
+          "FunctionExpression": true
+        },
+        "contexts": [
+          "ArrowFunctionExpression:not(VariableDeclarator > ArrowFunctionExpression)",
+          "FunctionExpression:not(VariableDeclarator > FunctionExpression)",
+          "FunctionDeclaration:not(ExportDefaultDeclaration > FunctionDeclaration)"
+        ]
+      }
+    ],
+    "jsdoc/require-param": 1,
+    "jsdoc/require-param-description": 1,
+    "jsdoc/require-param-name": 1,
+    "jsdoc/require-returns": 1,
+    "jsdoc/require-returns-description": 1,
+    "jsdoc/require-throws": 1,
+    "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+"],
+    "filenames/match-exported": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "jsdoc": {
+      "tagNamePreference": {
+        "returns": "returns"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "filenames/match-regex": [
+          "error",
+          "^([a-z][a-z0-9]*)([A-Z][a-z0-9]+)*(.d)?$"
+        ],
+        "filenames/match-exported": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.ts", "**/*.stories.tsx"],
+      "rules": {
+        "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+.stories$"],
+        "filenames/match-exported": "off"
+      }
+    },
+    {
+      "files": ["tests/**/*.spec.ts", "tests/**/*.spec.tsx"],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "strict": "off",
+        "filenames/match-regex": ["error", "^([a-zA-Z][a-z0-9]+)+.spec$"],
+        "filenames/match-exported": "off"
+      }
+    },
+    {
+      "files": [
+        ".eslintrc.json",
+        "next.config.js",
+        "jest.config.js",
+        "src/types/*.d.ts"
+      ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "filenames/match-regex": "off"
+      }
+    }
+  ]
 }
