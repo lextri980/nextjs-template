@@ -29,10 +29,10 @@
     "no-multi-spaces": "warn",
     "unicode-bom": "error",
     "no-duplicate-imports": "error",
-    "no-alert": "error",
+    "no-alert": "warn",
     "no-console": "warn",
     "no-debugger": "error",
-    "no-unused-vars": "off",
+    "no-unused-vars": "warn",
     "no-throw-literal": "error",
     "no-irregular-whitespace": [
       "error",
@@ -40,20 +40,14 @@
         "skipStrings": true,
         "skipComments": true,
         "skipRegExps": true,
-        "skipTemplates": true
+        "skipTemplates": true,
+        "skipJSXText": true
       }
     ],
+    // "quotes": ["warn", "single", { "avoidEscape": true }],
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "memberLike",
-        "modifiers": ["private"],
-        "format": ["camelCase"]
-      }
-    ],
     "jsdoc/require-jsdoc": [
       "warn",
       {
@@ -64,9 +58,10 @@
           "ArrowFunctionExpression": true,
           "FunctionExpression": true
         },
+        "exemptEmptyConstructors": true,
         "contexts": [
-          "ArrowFunctionExpression:not(VariableDeclarator > ArrowFunctionExpression)",
-          "FunctionExpression:not(VariableDeclarator > FunctionExpression)",
+          "ArrowFunctionExpression:not(FunctionDeclaration ArrowFunctionExpression, FunctionExpression ArrowFunctionExpression)",
+          "FunctionExpression:not(FunctionDeclaration FunctionExpression, FunctionExpression FunctionExpression)",
           "FunctionDeclaration:not(ExportDefaultDeclaration > FunctionDeclaration)"
         ]
       }
@@ -76,9 +71,7 @@
     "jsdoc/require-param-name": 1,
     "jsdoc/require-returns": 1,
     "jsdoc/require-returns-description": 1,
-    "jsdoc/require-throws": 1,
-    "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+"],
-    "filenames/match-exported": "error"
+    "jsdoc/require-throws": 1
   },
   "settings": {
     "react": {
@@ -92,7 +85,8 @@
   },
   "overrides": [
     {
-      "files": ["**/*.ts", "**/*.tsx"],
+      "files": ["src/app/**/*.{ts,tsx}"],
+      "excludedFiles": ["src/app/**/components/**/*.{ts,tsx}"],
       "rules": {
         "filenames/match-regex": [
           "error",
@@ -102,14 +96,28 @@
       }
     },
     {
-      "files": ["**/*.stories.ts", "**/*.stories.tsx"],
+      "files": ["src/components/**/*.{ts,tsx}"],
+      "excludedFiles": ["src/components/index.ts"],
+      "rules": {
+        "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+$"],
+        "filenames/match-exported": "error"
+      }
+    },
+    {
+      "files": ["src/store/**/*.{ts,tsx}"],
+      "rules": {
+        "jsdoc/require-jsdoc": "off"
+      }
+    },
+    {
+      "files": ["**/*.stories.{ts,tsx}"],
       "rules": {
         "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+.stories$"],
         "filenames/match-exported": "off"
       }
     },
     {
-      "files": ["tests/**/*.spec.ts", "tests/**/*.spec.tsx"],
+      "files": ["tests/**/*.spec.{ts,tsx}"],
       "env": {
         "jest": true
       },
@@ -122,7 +130,7 @@
     {
       "files": [
         ".eslintrc.json",
-        "next.config.js",
+        "next.config.mjs",
         "jest.config.js",
         "src/types/*.d.ts"
       ],
