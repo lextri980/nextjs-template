@@ -20,7 +20,6 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "plugins": ["@typescript-eslint", "react", "jsx-a11y", "jsdoc", "filenames"],
@@ -44,8 +43,8 @@
         "skipJSXText": true
       }
     ],
-    // "quotes": ["warn", "single", { "avoidEscape": true }],
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "error",
     "jsdoc/require-jsdoc": [

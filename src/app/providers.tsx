@@ -1,3 +1,4 @@
+import { StyledComponentsRegistry } from "@/libs";
 import StoreProvider from "@/store/StoreProvider";
 import { NextUIProvider } from "@nextui-org/react";
 
@@ -12,8 +13,10 @@ export function Providers({
   children: React.ReactNode;
 }): React.ReactNode {
   return (
-    <StoreProvider>
-      <NextUIProvider>{children}</NextUIProvider>
-    </StoreProvider>
+    <StyledComponentsRegistry>
+      <StoreProvider>
+        <NextUIProvider>{children}</NextUIProvider>
+      </StoreProvider>
+    </StyledComponentsRegistry>
   );
 }

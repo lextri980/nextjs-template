@@ -5,9 +5,11 @@ import {
   PutEffect,
   all,
   call,
+  put,
   takeLatest,
 } from "redux-saga/effects";
 import { ExampleActions } from "./example.reducer";
+import { HttpStatus } from "@/constants";
 
 export function* exampleWatcher() {
   yield all([
@@ -23,7 +25,12 @@ function* getPostWorker(): Generator<
   ResponseType<typeof getPostApi>
 > {
   try {
-    yield call(getPostApi);
+    const response = yield call(getPostApi);
+    if (response.status === HttpStatus.OK) {
+      yield put(ExampleActions.getPostSucess(response.data));
+    } else {
+      yield put(ExampleActions.getPostFail(response.statusText));
+    }
   } catch (error) {
     throw new Error();
   }

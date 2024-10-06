@@ -1,4 +1,4 @@
-import { StorageUtil } from "@utils";
+import { StorageUtil } from "@/utils";
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
 // Declare type for API response
@@ -63,9 +63,13 @@ class ApiService {
    * @returns {Promise<AxiosResponse<ApiResponse<T>>>} The response from API
    */
   async get<T>(endpoint: string): Promise<AxiosResponse<ApiResponse<T>>> {
-    const response: AxiosResponse<ApiResponse<T>> =
-      await this.requestWithRetry<T>(() => this.axiosInstance.get(endpoint));
-    return response;
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() => this.axiosInstance.get(endpoint));
+      return response;
+    } catch {
+      throw new Error("Something wrong");
+    }
   }
 
   /**
@@ -79,11 +83,15 @@ class ApiService {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: any
   ): Promise<AxiosResponse<ApiResponse<T>>> {
-    const response: AxiosResponse<ApiResponse<T>> =
-      await this.requestWithRetry<T>(() =>
-        this.axiosInstance.post(endpoint, data)
-      );
-    return response;
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() =>
+          this.axiosInstance.post(endpoint, data)
+        );
+      return response;
+    } catch {
+      throw new Error("Something wrong");
+    }
   }
 
   /**
@@ -97,11 +105,15 @@ class ApiService {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: any
   ): Promise<AxiosResponse<ApiResponse<T>>> {
-    const response: AxiosResponse<ApiResponse<T>> =
-      await this.requestWithRetry<T>(() =>
-        this.axiosInstance.put(endpoint, data)
-      );
-    return response;
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() =>
+          this.axiosInstance.put(endpoint, data)
+        );
+      return response;
+    } catch {
+      throw new Error("Something wrong");
+    }
   }
 
   /**
@@ -110,9 +122,15 @@ class ApiService {
    * @returns {Promise<AxiosResponse<ApiResponse<T>>>} The response from API
    */
   async delete<T>(endpoint: string): Promise<AxiosResponse<ApiResponse<T>>> {
-    const response: AxiosResponse<ApiResponse<T>> =
-      await this.requestWithRetry<T>(() => this.axiosInstance.delete(endpoint));
-    return response;
+    try {
+      const response: AxiosResponse<ApiResponse<T>> =
+        await this.requestWithRetry<T>(() =>
+          this.axiosInstance.delete(endpoint)
+        );
+      return response;
+    } catch {
+      throw new Error("Something wrong");
+    }
   }
 
   /**

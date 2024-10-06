@@ -3,16 +3,22 @@ import { IExample } from "./interface";
 
 const initialState: IExample = {
   state: true,
+  postList: [],
+  message: "",
 };
 
 const ExampleReducer = createSlice({
   name: "example",
   initialState,
   reducers: {
-    exampleAction() {},
     getPostRequest() {},
-    getPostSucess() {},
-    getPostFail() {},
+    getPostSucess(state, action) {
+      state.postList = action.payload;
+    },
+    getPostFail(state, action) {
+      state.postList = [];
+      state.message = action.payload;
+    },
   },
 });
 

@@ -32,6 +32,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/image/favicon.ico" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${nunito.className} antialiased`}
       >
