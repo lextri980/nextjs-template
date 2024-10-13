@@ -19,7 +19,7 @@ class ApiService {
 
   private constructor() {
     this.axiosInstance = axios.create({
-      baseURL: "https://jsonplaceholder.typicode.com",
+      baseURL: process.env.BASE_URL,
     });
   }
 

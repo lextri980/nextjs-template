@@ -8,4 +8,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
 const AuthLayoutContainer = styled.div`
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

@@ -22,7 +22,7 @@
     "plugin:react-hooks/recommended",
     "prettier"
   ],
-  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "jsdoc", "filenames"],
+  "plugins": ["@typescript-eslint", "react", "jsx-a11y", "filenames"],
   "rules": {
     "no-trailing-spaces": "warn",
     "no-multi-spaces": "warn",
@@ -46,43 +46,15 @@
     "react/react-in-jsx-scope": "off",
     "react-hooks/exhaustive-deps": "off",
     "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-explicit-any": "error",
-    "jsdoc/require-jsdoc": [
-      "warn",
-      {
-        "require": {
-          "FunctionDeclaration": false,
-          "MethodDefinition": true,
-          "ClassDeclaration": true,
-          "ArrowFunctionExpression": true,
-          "FunctionExpression": true
-        },
-        "exemptEmptyConstructors": true,
-        "contexts": [
-          "ArrowFunctionExpression:not(FunctionDeclaration ArrowFunctionExpression, FunctionExpression ArrowFunctionExpression)",
-          "FunctionExpression:not(FunctionDeclaration FunctionExpression, FunctionExpression FunctionExpression)",
-          "FunctionDeclaration:not(ExportDefaultDeclaration > FunctionDeclaration)"
-        ]
-      }
-    ],
-    "jsdoc/require-param": 1,
-    "jsdoc/require-param-description": 1,
-    "jsdoc/require-param-name": 1,
-    "jsdoc/require-returns": 1,
-    "jsdoc/require-returns-description": 1,
-    "jsdoc/require-throws": 1
+    "@typescript-eslint/no-explicit-any": "warn"
   },
   "settings": {
     "react": {
       "version": "detect"
-    },
-    "jsdoc": {
-      "tagNamePreference": {
-        "returns": "returns"
-      }
     }
   },
   "overrides": [
+    // For all files with ts, tsx file extension
     {
       "files": ["src/app/**/*.{ts,tsx}"],
       "excludedFiles": ["src/app/**/components/**/*.{ts,tsx}"],
@@ -94,20 +66,12 @@
         "filenames/match-exported": "off"
       }
     },
-    {
-      "files": ["src/components/**/*.{ts,tsx}"],
-      "excludedFiles": ["src/components/index.ts"],
-      "rules": {
-        "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+$"],
-        "filenames/match-exported": "error"
-      }
-    },
+    // For all files with ts, tsx file extension in store folder
     {
       "files": ["src/store/**/*.{ts,tsx}"],
-      "rules": {
-        "jsdoc/require-jsdoc": "off"
-      }
+      "rules": {}
     },
+    // For all files with stories.ts, stories.tsx file extension
     {
       "files": ["**/*.stories.{ts,tsx}"],
       "rules": {
@@ -115,6 +79,7 @@
         "filenames/match-exported": "off"
       }
     },
+    // For all files with spec.ts, spec.tsx file extension in tests folder
     {
       "files": ["tests/**/*.spec.{ts,tsx}"],
       "env": {
@@ -126,6 +91,7 @@
         "filenames/match-exported": "off"
       }
     },
+    // For all files with json, mjs file extension
     {
       "files": [
         ".eslintrc.json",
@@ -136,6 +102,13 @@
       "rules": {
         "@typescript-eslint/no-var-requires": "off",
         "filenames/match-regex": "off"
+      }
+    },
+    // For all files with type.ts file extension
+    {
+      "files": ["**/type.ts"],
+      "rules": {
+        "no-unused-vars": "off"
       }
     }
   ]
