@@ -1,13 +1,9 @@
-import { InputProps } from "@nextui-org/react";
-import { Control, FieldValues } from "react-hook-form";
-
-export interface IFormInput<T extends FieldValues> extends InputProps {
-  // Common props
+export interface IFormInput {
   type?: string;
-  control: Control<T>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  control: any;
   name: string;
-
-  errorMessage?: React.ReactNode | (() => React.ReactNode);
+  // Common
   defaultValue?: string;
   variant?: "flat" | "bordered" | "faded" | "underlined";
   color?:

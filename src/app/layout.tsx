@@ -1,8 +1,10 @@
 import "@/assets/style/global.scss";
+import { config } from "@fortawesome/fontawesome-svg-core";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import localFont from "next/font/local";
 import { Providers } from "./providers";
+config.autoAddCss = false;
 
 const geistSans = localFont({
   src: "../assets/font/GeistVF.woff",

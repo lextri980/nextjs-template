@@ -37,6 +37,7 @@ export default function Login() {
           name="email"
           label="Email"
           placeholder="Email"
+          isInvalid={errors.email?.message ? true : false}
           labelPlacement="outside"
         />
         <small className="text-red-500 align-self-start w-full">
@@ -50,6 +51,7 @@ export default function Login() {
           label="Password"
           placeholder="Password"
           labelPlacement="outside"
+          isInvalid={errors.password?.message ? true : false}
         />
         <small className="text-red-500 align-self-start w-full">
           {errors && errors.password?.message}

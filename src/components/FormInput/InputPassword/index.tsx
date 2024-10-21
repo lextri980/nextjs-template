@@ -1,15 +1,36 @@
-import { Input, InputProps } from "@nextui-org/react";
-import React from "react";
+import { Icon } from "@/components";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { InputProps } from "@nextui-org/react";
+import React, { useState } from "react";
+import { PasswordContainer } from "./style";
 
-interface InputPasswordProps extends InputProps {
-  isVisible?: boolean;
-}
-
-const InputPassword = React.forwardRef<HTMLInputElement, InputPasswordProps>(
+const InputPassword = React.forwardRef<HTMLInputElement, InputProps>(
   (props, ref) => {
-    const { isVisible, ...rest } = props;
+    const { ...rest } = props;
+
+    const [isVisible, setIsVisible] = useState(false);
+
+    /**
+     * Toggle eyes icon in password
+     * @returns void
+     */
+    const toggleVisibility = () => setIsVisible(!isVisible);
+
     return (
-      <Input type={isVisible ? "text" : "password"} {...rest} baseRef={ref} />
+      <PasswordContainer
+        type={isVisible ? "text" : "password"}
+        endContent={
+          <button onClick={toggleVisibility}>
+            {isVisible ? (
+              <Icon icon={faEyeSlash}></Icon>
+            ) : (
+              <Icon icon={faEye}></Icon>
+            )}
+          </button>
+        }
+        {...rest}
+        baseRef={ref}
+      />
     );
   }
 );
