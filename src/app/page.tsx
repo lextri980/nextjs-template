@@ -89,6 +89,19 @@ export default function Home() {
           />
           Example page
         </span>
+        <span
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4 cursor-pointer"
+          onClick={() => goExamplePage("/server-example")}
+        >
+          <Image
+            aria-hidden
+            src="https://nextjs.org/icons/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Server example page
+        </span>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
