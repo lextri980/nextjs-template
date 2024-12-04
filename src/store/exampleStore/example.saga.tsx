@@ -1,5 +1,6 @@
+import { HttpStatus } from "@/constants";
 import { ResponseType } from "@/types";
-import { ApiService } from "@/services";
+import { getPostApi } from "@api/example.api";
 import {
   CallEffect,
   PutEffect,
@@ -9,7 +10,6 @@ import {
   takeLatest,
 } from "redux-saga/effects";
 import { ExampleActions } from "./example.reducer";
-import { HttpStatus } from "@/constants";
 
 export function* exampleWatcher() {
   yield all([
@@ -18,7 +18,6 @@ export function* exampleWatcher() {
   ]);
 }
 
-const getPostApi = async () => await ApiService.get("/posts");
 function* getPostWorker(): Generator<
   CallEffect | PutEffect,
   void,
