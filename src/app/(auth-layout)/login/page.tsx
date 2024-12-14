@@ -1,5 +1,7 @@
 "use client";
 import { Button, FormInput } from "@/components";
+import { useAppDispatch } from "@/hooks";
+import { AuthActions } from "@/store/authStore/auth.reducer";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DefaultValues, SubmitHandler, useForm } from "react-hook-form";
 import { schema } from "./schema";
@@ -7,6 +9,7 @@ import { LoginContainer } from "./style";
 import { ILogin } from "./type";
 
 export default function Login() {
+  const dispatch = useAppDispatch();
   const defaultValues: DefaultValues<ILogin> = {
     email: "",
     password: "",
@@ -23,8 +26,12 @@ export default function Login() {
     defaultValues,
   });
 
-  const login: SubmitHandler<ILogin> = (value) => {
-    console.log(value);
+  /**
+   * Handle login
+   * @param {Object} value - Value of login form
+   */
+  const login: SubmitHandler<ILogin> = () => {
+    dispatch(AuthActions.loginRequest());
     reset();
   };
 

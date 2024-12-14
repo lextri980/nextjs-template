@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { HomeContainer } from "./style";
 import { useRouter } from "next/navigation";
+import { HomeContainer } from "./style";
 
 export default function Home() {
   const router = useRouter();
