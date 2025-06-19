@@ -1,15 +1,57 @@
+import '@/styles/globals.scss';
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import './globals.scss';
+import { Nunito } from 'next/font/google';
+import { Providers } from './providers';
+import localFont from 'next/font/local';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+// [Font] Use Next font
+const nunito = Nunito({
   subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-nunito',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+// [Font] Use Local font (store in public)
+const montserrat = localFont({
+  src: [
+    {
+      path: '../../public/fonts/Montserrat-ExtraLight.ttf',
+      weight: '100',
+    },
+    {
+      path: '../../public/fonts/Montserrat-ExtraLight.ttf',
+      weight: '200',
+    },
+    {
+      path: '../../public/fonts/Montserrat-Light.ttf',
+      weight: '300',
+    },
+    {
+      path: '../../public/fonts/Montserrat-Regular.ttf',
+      weight: '400',
+    },
+    {
+      path: '../../public/fonts/Montserrat-Medium.ttf',
+      weight: '500',
+    },
+    {
+      path: '../../public/fonts/Montserrat-SemiBold.ttf',
+      weight: '600',
+    },
+    {
+      path: '../../public/fonts/Montserrat-Bold.ttf',
+      weight: '700',
+    },
+    {
+      path: '../../public/fonts/Montserrat-ExtraBold.ttf',
+      weight: '800',
+    },
+    {
+      path: '../../public/fonts/Montserrat-Black.ttf',
+      weight: '900',
+    },
+  ],
+  variable: '--font-montserrat',
 });
 
 export const metadata: Metadata = {
@@ -25,8 +67,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        className={`${nunito.className} ${montserrat.className} antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
