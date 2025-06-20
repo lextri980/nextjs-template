@@ -19,7 +19,7 @@ export function Providers({
         position='top-right'
         offset={{ top: '24px', right: '24px' }}
         mobileOffset={{ top: '10px', right: '10px' }}
-        toastOptions={{ duration: 50000 }}
+        toastOptions={{ duration: 5000 }}
       />
     </StoreProvider>
   );

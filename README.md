@@ -1,7 +1,8 @@
 ### Version infomation
-- **Developing version: 2.0.0**
-- **Beta version: 1.0.0**
-- **Stable version (master): 1.0.0**
+
+- **Developing version: 2.0.0 | [version-2.0.0](https://github.com/lextri980/nextjs-template/tree/version-2.0.0)**
+- **Beta version: 1.1 | [beta-version](https://github.com/lextri980/nextjs-template/tree/beta-version)**
+- **Stable version: 1.1 | [master](https://github.com/lextri980/nextjs-template/tree/master)**
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 

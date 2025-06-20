@@ -3,10 +3,10 @@ import { TProps } from './type';
 import { toast as sonnerToast } from 'sonner';
 
 export default function Toaster(props: TProps) {
-  // [Props] Define props
+  // [Props] Destructuring props
   const { message = 'This is a toast' } = props;
 
-  // ![JSX Section] -----------------------------------------------------------------
+  //! [JSX Section] -----------------------------------------------------------------
   return (
     <div className='toaster-container'>
       <div className='message-wrapper'>{message}</div>

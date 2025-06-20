@@ -53,8 +53,7 @@ export default function Home() {
       <footer className='row-start-3 flex gap-[24px] flex-wrap items-center justify-center'>
         <a
           className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
+          href='/login'
           rel='noopener noreferrer'>
           <Image
             aria-hidden
@@ -63,7 +62,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Learn
+          Login
         </a>
         <a
           className='flex items-center gap-2 hover:underline hover:underline-offset-4'
@@ -80,8 +79,7 @@ export default function Home() {
         </a>
         <a
           className='flex items-center gap-2 hover:underline hover:underline-offset-4'
-          href='https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          target='_blank'
+          href='/server-example'
           rel='noopener noreferrer'>
           <Image
             aria-hidden
@@ -90,7 +88,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Go to nextjs.org →
+          Server page
         </a>
       </footer>
     </div>

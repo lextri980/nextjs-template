@@ -1,3 +1,11 @@
+/* ---------------------- INPUT ---------------------- */
+input {
+  font-family: var(--font-montserrat) !important;
+  font-size: 15px !important;
+  &::placeholder {
+    font-size: 15px !important;
+  }
+}
 /* ---------------------- TOASTER ---------------------- */
 .toaster-provider {
   background-color: red;
