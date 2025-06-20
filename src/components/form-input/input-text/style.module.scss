@@ -1,0 +1,34 @@
+.textfield-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  .label.error {
+    color: #d32f2f;
+  }
+  .textfield-root {
+    width: 100%;
+    .textfield-input {
+      height: 16px;
+      padding: 10px 15px;
+    }
+    :global(.MuiInputBase-root) {
+      &:hover fieldset {
+        border: 1px solid #8f8f8f;
+      }
+    }
+    :global(.MuiInputBase-root.Mui-focused) {
+      fieldset {
+        border: 1px solid #646464;
+      }
+    }
+    :global(.MuiInputBase-root.Mui-error) {
+      fieldset {
+        border: 1px solid #d32f2f;
+      }
+    }
+  }
+  .error-text {
+    color: #d32f2f;
+  }
+}

@@ -1,8 +1,12 @@
 @use 'tailwindcss';
+@use './commponent.scss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #808080;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,5 +19,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
 }
