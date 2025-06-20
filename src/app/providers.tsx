@@ -1,6 +1,5 @@
-'use client';
-
 import StoreProvider from '@/stores/StoreProvider';
+import { Toaster as ToasterProvider } from 'sonner';
 
 /**
  * Providers component
@@ -12,5 +11,16 @@ export function Providers({
 }: {
   children: React.ReactNode;
 }): React.ReactNode {
-  return <StoreProvider>{children}</StoreProvider>;
+  return (
+    <StoreProvider>
+      {children}
+      <ToasterProvider
+        className='toaster-provider'
+        position='top-right'
+        offset={{ top: '24px', right: '24px' }}
+        mobileOffset={{ top: '10px', right: '10px' }}
+        toastOptions={{ duration: 50000 }}
+      />
+    </StoreProvider>
+  );
 }

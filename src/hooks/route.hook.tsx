@@ -4,7 +4,7 @@ import { useParams, usePathname, useSearchParams } from 'next/navigation';
  * [Hook] Get specific data in router
  * @returns Params, query, pathname & fullpath
  */
-export function useRoute() {
+export default function useRoute() {
   // [Hook] Get param URL
   const params = useParams();
   // [Hook] Get pathname URL

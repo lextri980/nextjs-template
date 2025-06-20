@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import PostList from './components/PostList';
 import styles from './style.module.scss';
-import LoadingWrapper from '@/components/Loading';
+import LoadingWrapper from '@/components/loading';
 
 export default function ServerExample() {
   return (

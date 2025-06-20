@@ -1,3 +1,8 @@
+### Version infomation
+- **Developing version: 2.0.0**
+- **Beta version: 1.0.0**
+- **Stable version (master): 1.0.0**
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

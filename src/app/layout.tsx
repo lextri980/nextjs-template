@@ -1,8 +1,8 @@
 import '@/styles/globals.scss';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
-import { Providers } from './providers';
 import localFont from 'next/font/local';
+import { Providers } from './providers';
 
 // [Font] Use Next font
 const nunito = Nunito({
