@@ -15,8 +15,8 @@
 **Branches information**
 
 - **Developing version: 2.sa.0 | [version-2.sa.0](https://github.com/lextri980/nextjs-template/tree/version-2.sa.0)**
-- **Beta version: 0 | [beta-version](https://github.com/lextri980/nextjs-template/tree/beta-version)**
-- **Stable version: 0 | [master](https://github.com/lextri980/nextjs-template/tree/master)**
+- **Beta version: 2.sa.0 | [beta-sa-version](https://github.com/lextri980/nextjs-template/tree/beta-sa-version)**
+- **Stable version: 2.sa.0 | [sa-version](https://github.com/lextri980/nextjs-template/tree/sa-version)**
 
 ## ⚙️ Getting Started
 
