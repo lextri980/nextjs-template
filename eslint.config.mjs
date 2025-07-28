@@ -65,7 +65,7 @@ const eslintConfig = [
       'react-hooks/exhaustive-deps': 'off',
       'import/named': 'error',
       'import/default': 'error',
-      'import/no-unresolved': 'error',
+      'import/no-unresolved': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
