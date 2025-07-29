@@ -1,4 +1,4 @@
-# <img src="https://cdn.creazilla.com/icons/3270329/next-dot-js-icon-size_256.png" alt="My Skills" width="30" /> Next.js Template (SA)
+# <img src="./public/svg/vercel.svg" alt="My Skills" width="30" /> Next.js Template (SA Version)
 
 [Next.js App router](https://nextjs.org/) boilerplate for a typical project
 
