@@ -1,5 +1,5 @@
-import React from "react";
+import LoadingWrapper from '@/components/loading';
 
 export default function Loading() {
-  return <div>Loading...</div>;
+  return <LoadingWrapper />;
 }

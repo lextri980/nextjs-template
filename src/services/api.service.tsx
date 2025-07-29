@@ -1,5 +1,9 @@
-import { StorageUtil } from "@/utils";
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import { StorageUtil } from '@/utils';
+import axios, {
+  AxiosError,
+  type AxiosInstance,
+  type AxiosResponse,
+} from 'axios';
 
 // Declare type for API response
 type ApiResponse<T> = {
@@ -41,11 +45,10 @@ class ApiService {
   async setAccessToken(token: string | null) {
     this.accessToken = token;
     if (this.accessToken) {
-      this.axiosInstance.defaults.headers.common[
-        "Authorizations"
-      ] = `Bearer ${this.accessToken}`;
+      this.axiosInstance.defaults.headers.common['Authorizations'] =
+        `Bearer ${this.accessToken}`;
     } else {
-      delete this.axiosInstance.defaults.headers.common["Authorizations"];
+      delete this.axiosInstance.defaults.headers.common['Authorizations'];
     }
   }
 
@@ -68,7 +71,7 @@ class ApiService {
         await this.requestWithRetry<T>(() => this.axiosInstance.get(endpoint));
       return response;
     } catch {
-      throw new Error("Something wrong");
+      throw new Error('Something wrong');
     }
   }
 
@@ -90,7 +93,7 @@ class ApiService {
         );
       return response;
     } catch {
-      throw new Error("Something wrong");
+      throw new Error('Something wrong');
     }
   }
 
@@ -112,7 +115,7 @@ class ApiService {
         );
       return response;
     } catch {
-      throw new Error("Something wrong");
+      throw new Error('Something wrong');
     }
   }
 
@@ -129,7 +132,7 @@ class ApiService {
         );
       return response;
     } catch {
-      throw new Error("Something wrong");
+      throw new Error('Something wrong');
     }
   }
 
@@ -142,7 +145,7 @@ class ApiService {
     requestFunction: () => Promise<AxiosResponse<ApiResponse<T>>>
   ): Promise<AxiosResponse<ApiResponse<T>>> {
     try {
-      this.setAccessToken(StorageUtil.getLocal("token"));
+      this.setAccessToken(StorageUtil.getLocal('token'));
       const response = await requestFunction();
       return response;
     } catch (err) {
@@ -152,7 +155,7 @@ class ApiService {
       if (
         error.response &&
         error.response.status === 401 &&
-        error.response.data.message === "Token expired"
+        error.response.data.message === 'Token expired'
       ) {
         // If accessToken is expired, handle refresh token here
         await this.refreshAccessToken();
@@ -170,13 +173,13 @@ class ApiService {
   private async refreshAccessToken() {
     // Send refresh token request and update new accessToken
     try {
-      const response = await this.axiosInstance.post("/refreshToken", {
+      const response = await this.axiosInstance.post('/refreshToken', {
         refreshToken: this.refreshToken,
       });
       const newAccessToken = response.data.accessToken;
       this.setAccessToken(newAccessToken);
-    } catch (error) {
-      throw new Error("Failed to refresh access token");
+    } catch {
+      throw new Error('Failed to refresh access token');
     }
   }
 }

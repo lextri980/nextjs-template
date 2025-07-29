@@ -1,3 +1,3 @@
-import { ApiService } from "@/services";
+import { ApiService } from '@/services';
 
-export const getPostApi = async () => await ApiService.get("/posts");
+export const getPostApi = async () => await ApiService.get('/posts');

@@ -1,10 +1,10 @@
-"use client";
-import { useAppDispatch, useAppSelector } from "@/hooks";
-import { ExampleActions } from "@/store/exampleStore/example.reducer";
-import React, { useEffect } from "react";
-import { ExampleContainer } from "./style";
+'use client';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux.hook';
+import { ExampleActions } from '@/stores/example-store/example.reducer';
+import { useEffect } from 'react';
+import styles from './style.module.scss';
 
-export default function Example() {
+function Example() {
   const exampleState = useAppSelector((state) => state.example);
   const dispatch = useAppDispatch();
 
@@ -13,16 +13,18 @@ export default function Example() {
   }, []);
 
   return (
-    <ExampleContainer>
+    <div className={styles['example-container']}>
       Example page
-      <div className="post-display">
+      <div className={styles['post-display']}>
         {exampleState.postList?.map((item, index) => (
-          <div className="post-single" key={index}>
-            <span>{index + 1}</span>
+          <div className={styles['post-single']} key={index}>
+            <span>{index + 1}.</span>
             <span>{item.title}</span>
           </div>
         ))}
       </div>
-    </ExampleContainer>
+    </div>
   );
 }
+
+export default Example;
