@@ -78,13 +78,12 @@ class ApiService {
   /**
    * Post data to API
    * @param {string} endpoint - The endpoint to post data
-   * @param {any} data - The data to post
+   * @param {unknown} data - The data to post
    * @returns {Promise<AxiosResponse<ApiResponse<T>>>} The response from API
    */
   async post<T>(
     endpoint: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: any
+    data: unknown
   ): Promise<AxiosResponse<ApiResponse<T>>> {
     try {
       const response: AxiosResponse<ApiResponse<T>> =
@@ -100,13 +99,12 @@ class ApiService {
   /**
    * Put data to API
    * @param {string} endpoint - The endpoint to put data
-   * @param {any} data - The data to put
+   * @param {unknown} data - The data to put
    * @returns {Promise<AxiosResponse<ApiResponse<T>>>} The response from API
    */
   async put<T>(
     endpoint: string,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    data: any
+    data: unknown
   ): Promise<AxiosResponse<ApiResponse<T>>> {
     try {
       const response: AxiosResponse<ApiResponse<T>> =
@@ -149,14 +147,9 @@ class ApiService {
       const response = await requestFunction();
       return response;
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const error = err as AxiosError<any>;
+      const error = err as AxiosError<AxiosResponse<T>>;
       // Check error related to expired token
-      if (
-        error.response &&
-        error.response.status === 401 &&
-        error.response.data.message === 'Token expired'
-      ) {
+      if (error.response && error.response.status === 401) {
         // If accessToken is expired, handle refresh token here
         await this.refreshAccessToken();
         // After refresh token successfully, handle calling API agian

@@ -1,3 +1,4 @@
+import Loading from '@/components/loading';
 import StoreProvider from '@/stores/StoreProvider';
 import { Toaster as ToasterProvider } from 'sonner';
 
@@ -14,6 +15,7 @@ export function Providers({
   return (
     <StoreProvider>
       {children}
+      <Loading />
       <ToasterProvider
         className='toaster-provider'
         position='top-right'
