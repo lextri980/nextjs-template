@@ -6,9 +6,9 @@
 
 ### 💥 [SA Version]
 
-- **Developing version: 2.sa.0 | [version-2.sa.0](https://github.com/lextri980/nextjs-template/tree/version-2.sa.0)**
-- **Beta version: 2.sa.0 | [beta-sa-version](https://github.com/lextri980/nextjs-template/tree/beta-sa-version)**
-- **Stable version: 2.sa.0 | [sa-version](https://github.com/lextri980/nextjs-template/tree/sa-version)**
+- **Developing version: 2.0 | [version-2.sa.0](https://github.com/lextri980/nextjs-template/tree/version-2.sa.0)**
+- **Beta version: 2.0 | [beta-sa-version](https://github.com/lextri980/nextjs-template/tree/beta-sa-version)**
+- **Stable version: 2.0 | [sa-version](https://github.com/lextri980/nextjs-template/tree/sa-version)**
 
 >**📦 Tech Stack**
 
