@@ -1,3 +1,3 @@
-import { HttpStatus } from "./httpStatus.constant";
+import { HttpStatus } from './http-status.constant';
 
 export { HttpStatus };
