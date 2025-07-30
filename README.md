@@ -10,13 +10,24 @@
 - **Global state:** [`Redux toolkit (2)`](https://github.com/jquense/yup)
 - **API handler:** [`Redux saga (1)`](https://github.com/jquense/yup)
 
-## ⛓ Versions and Branches
+## 💥 Develop version
 
-**Branches information**
-
-- **Developing version: 2.sa.0 | [version-2.sa.0](https://github.com/lextri980/nextjs-template/tree/version-2.sa.0)**
-- **Beta version: 2.sa.0 | [beta-sa-version](https://github.com/lextri980/nextjs-template/tree/beta-sa-version)**
-- **Stable version: 2.sa.0 | [sa-version](https://github.com/lextri980/nextjs-template/tree/sa-version)**
+<table>
+  <tr>
+    <th>No.</th>
+    <th>Version</th>
+    <th>Branch</th>
+  </tr>
+  <tr style="text-align: center">
+    <td>1</td>
+    <td>2.0</td>
+    <td>
+      <a href="https://github.com/lextri980/nextjs-template/tree/version-2.sa.0">
+        version-2.sa.0
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## ⚙️ Getting Started
 
@@ -51,29 +62,24 @@ Visit [http://localhost:4242](http://localhost:4242) in your browser.
 
 ```
 .
-├── public/           # Public section
-│   ├── fonts/        # Local fonts
-│   ├── svg/          # SVG file type
-│   └── image/        # Other image file type (.png,.jpg,...)
-├── src/            # Application routes
-│   ├── app/          # API endpoints
-│   ├── components/      # Home page
-│   ├── config/          # API endpoints
-│   ├── constans/
-│   ├── contexts/
-│   ├── hooks/
-│   ├── services/
-│   ├── stores/
-│   ├── styles/
-│   ├── utils/
-│   └── index.tsx
-├── .env.example
-└── eslint.config.mjs
+├── public/             # Public section
+│   ├── fonts/          # Local fonts
+│   ├── svg/            # SVG file type
+│   └── image/          # Other image file type (.png,.jpg,...)
+├── src/                # Application routes source
+│   ├── app/            # Layouts and UI
+│   ├── components/     # Components
+│   ├── config/         # Config
+│   ├── constans/       # Global constans
+│   ├── contexts/       # Contexts
+│   ├── hooks/          # Custom hooks
+│   ├── services/       # Services
+│   ├── stores/         # Redux toolkit store
+│   ├── styles/         # Global & Specific styles
+│   └── utils/          # Utilities
+├── .env.example        # Environment variable example
+└── eslint.config.mjs   # Eslint config
 ```
-
-## 🧪 Testing
-
-_Comming soon..._
 
 ## 📦 Deployment
 
