@@ -1,5 +1,5 @@
-import LoadingWrapper from '@/components/loading';
+import ServerLoading from '@/components/server-loading';
 
 export default function Loading() {
-  return <LoadingWrapper />;
+  return <ServerLoading />;
 }

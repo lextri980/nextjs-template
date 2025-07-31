@@ -42,7 +42,7 @@ export default function FormInput<T>(props: TFormInput<T>) {
     return <Input.Component {...rest} {...inputProps} />;
   };
 
-  //! [JSX Section] -----------------------------------------------------------------
+  //! [JSX Section]
   return (
     <Controller
       control={control}

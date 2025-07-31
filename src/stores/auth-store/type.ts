@@ -1,7 +1,7 @@
 /**
  * [Type] Global Auth state
  */
-export type TAuthState = {
+export type TInitialState = {
   message: string;
   loading: boolean;
 };

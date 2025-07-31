@@ -12,6 +12,7 @@ import { TLoginForm } from './type';
 export default function Login() {
   // [Hook] Toaster hook
   const toast = useToast();
+
   // [Form Hook] Login form
   const {
     control,

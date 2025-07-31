@@ -1,11 +1,14 @@
 import { TApiResponse } from '../base.type';
 
 /**
- * [Type] Global Example state
+ * [Type] Initial state
  */
-export type TExampleState = {
-  state: boolean;
+export type TInitialState = {
+  // Global loading state
+  loading: boolean;
+  // Post list
   postList: TPostList[];
+  // Message
   message: string;
 };
 

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { TAuthState } from './type';
+import { TInitialState } from './type';
 
-const initialState: TAuthState = {
+const initialState: TInitialState = {
   message: '',
   loading: false,
 };

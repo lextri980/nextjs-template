@@ -69,66 +69,6 @@ const eslintConfig = [
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
-    // overrides: [
-    //   // For all files with ts, tsx file extension
-    //   {
-    //     files: ["src/app/**/*.{ts,tsx}"],
-    //     excludedFiles: ["src/app/**/components/**/*.{ts,tsx}"],
-    //     rules: {
-    //       "filenames/match-regex": [
-    //         "error",
-    //         "^([a-z][a-z0-9]*)([A-Z][a-z0-9]+)*(.d)?$",
-    //         { "match": true }
-    //       ],
-    //       "filenames/match-exported": "off",
-    //     },
-    //   },
-    //   // For all files with ts, tsx file extension in store folder
-    //   {
-    //     files: ["src/store/**/*.{ts,tsx}"],
-    //     rules: {},
-    //   },
-    //   // For all files with stories.ts, stories.tsx file extension
-    //   {
-    //     files: ["**/*.stories.{ts,tsx}"],
-    //     rules: {
-    //       "filenames/match-regex": ["error", "^([A-Z][a-z0-9]+)+.stories$"],
-    //       "filenames/match-exported": "off",
-    //     },
-    //   },
-    //   // For all files with spec.ts, spec.tsx file extension in tests folder
-    //   {
-    //     files: ["tests/**/*.spec.{ts,tsx}"],
-    //     env: {
-    //       jest: true,
-    //     },
-    //     rules: {
-    //       strict: "off",
-    //       "filenames/match-regex": ["error", "^([a-zA-Z][a-z0-9]+)+.spec$"],
-    //       "filenames/match-exported": "off",
-    //     },
-    //   },
-    //   // For all files with json, mjs file extension
-    //   {
-    //     files: [
-    //       ".eslintrc.json",
-    //       "next.config.mjs",
-    //       "jest.config.js",
-    //       "src/types/*.d.ts",
-    //     ],
-    //     rules: {
-    //       "@typescript-eslint/no-var-requires": "off",
-    //       "filenames/match-regex": "off",
-    //     },
-    //   },
-    //   // For all files with type.ts file extension
-    //   {
-    //     files: ["**/type.ts"],
-    //     rules: {
-    //       "no-unused-vars": "off",
-    //     },
-    //   },
-    // ],
   }),
 ];
 

@@ -6,7 +6,7 @@ export default function Toaster(props: TProps) {
   // [Props] Destructuring props
   const { message = 'This is a toast' } = props;
 
-  //! [JSX Section] -----------------------------------------------------------------
+  //! [JSX Section]
   return (
     <div className='toaster-container'>
       <div className='message-wrapper'>{message}</div>
