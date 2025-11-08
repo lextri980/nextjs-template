@@ -20,6 +20,15 @@
   </tr>
   <tr style="text-align: center">
     <td>1</td>
+    <td>2.1</td>
+    <td>
+      <a href="https://github.com/lextri980/nextjs-template/tree/version-sa-2.1">
+        version-sa-2.1
+      </a>
+    </td>
+  </tr>
+  <tr style="text-align: center">
+    <td>2</td>
     <td>2.0</td>
     <td>
       <a href="https://github.com/lextri980/nextjs-template/tree/version-2.sa.0">
