@@ -1,5 +1,3 @@
-import * as useRedux from './redux.hook';
-import useRoute from './route.hook';
-import useToast from './toast.hook';
-
-export { useRedux, useRoute, useToast };
+export * as useRedux from './redux.hook';
+export { default as useRoute } from './route.hook';
+export { default as useToast } from './toast.hook';

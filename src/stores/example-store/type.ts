@@ -1,8 +1,6 @@
-import { TApiResponse } from '../base.type';
+import { TApiResponse } from '@/common/types';
 
-/**
- * [Type] Initial state
- */
+// [Type] Initial state
 export type TInitialState = {
   // Global loading state
   loading: boolean;
@@ -12,12 +10,10 @@ export type TInitialState = {
   message: string;
 };
 
-/**
- * [Type] Global Example state child
- * @description Post list
- */
-type TPostList = TGetPostApiRes['data'];
+// [Type] Post list item type
+export type TPostList = TGetPostApiRes['data'];
 
+// [Type] Get Post API response type
 export type TGetPostApiRes = TApiResponse<{
   id: number;
   body: string;

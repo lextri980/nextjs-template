@@ -35,13 +35,20 @@ const eslintConfig = [
       'plugin:react-hooks/recommended',
       'prettier',
     ],
-    plugins: ['@typescript-eslint', 'react', 'filenames', 'import'],
+    plugins: [
+      '@typescript-eslint',
+      'react',
+      'react-hooks',
+      'filenames',
+      'import',
+    ],
     settings: {
       react: {
         version: 'detect',
       },
     },
     rules: {
+      // Common Rules
       'no-trailing-spaces': 'warn',
       'no-multi-spaces': 'warn',
       'unicode-bom': 'error',
@@ -61,15 +68,27 @@ const eslintConfig = [
           skipJSXText: true,
         },
       ],
+      // React rules
       'react/react-in-jsx-scope': 'off',
       'react-hooks/exhaustive-deps': 'off',
+      // Import rules
       'import/named': 'error',
       'import/default': 'error',
       'import/no-unresolved': 'off',
+      // TypeScript rules
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   }),
+  {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'build/**',
+      'next-env.d.ts',
+    ],
+  },
 ];
 
 export default eslintConfig;

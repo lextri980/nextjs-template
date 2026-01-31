@@ -1,60 +1,56 @@
 'use client';
-import FormInput from '@/components/form-input';
+import { Field, RadioGroup, TextField } from '@/components';
 import { useToast } from '@/hooks';
-import { yupResolver } from '@hookform/resolvers/yup';
-import Button from '@mui/material/Button';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button } from '@mui/material';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
-import { defaultLoginForm } from './constant';
+import { LOGIN_FORM_DVALUES } from './constant';
 import { loginSchema } from './schema';
 import styles from './style.module.scss';
 import { TLoginForm } from './type';
 
 export default function Login() {
+  // [Hook] Translation hook
+  const t = useTranslations('auth');
+  const tMsg = useTranslations('message');
+  // [Hook] Route action hook
+  const router = useRouter();
   // [Hook] Toaster hook
   const toast = useToast();
 
-  // [Form Hook] Login form
+  // [Form] Login form hook
   const {
     control,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
   } = useForm<TLoginForm>({
-    resolver: yupResolver(loginSchema),
-    defaultValues: defaultLoginForm,
+    resolver: zodResolver(loginSchema(tMsg)),
+    defaultValues: LOGIN_FORM_DVALUES,
   });
 
   /**
-   * Handle login
+   * Handle login form submit
+   * @param data - Login form data
    */
-  const login = () => {
+  const handleLogin = (data: TLoginForm) => {
+    router.push(`/login?username=${data.username}`);
     toast.success('Login successfully');
   };
 
-  //! [JSX Section] -----------------------------------------------------------------
   return (
     <div className={styles['login-container']}>
       <div className={styles['login-form-wrapper']}>
-        <p className='text-3xl text-center mb-4'>Login</p>
-        <div className='form-group flex flex-col gap-4 justify-center items-center'>
-          <FormInput
-            control={control}
-            label='Email'
-            name='email'
-            placeholder='Email'
-            error={errors && errors.email?.message}
-          />
-          <FormInput
-            control={control}
-            label='Password'
-            name='password'
-            placeholder='Password'
-            error={errors && errors.password?.message}
-          />
-          <div className='w-full flex justify-end'>
-            {/* <FormInput control={control} type='checkbox' name='remember' /> */}
-            <span>Remember me</span>
-          </div>
-          <Button onClick={handleSubmit(login)}>Login</Button>
+        <p className='text-3xl text-center mb-4'>{t('login')}</p>
+        <div className='flex flex-col gap-4 justify-center items-center'>
+          <Field control={control} name='username' label='Username' required>
+            <TextField error={errors?.username?.message} />
+          </Field>
+          <Field control={control} name='password' label='Password' required>
+            <TextField type='password' error={errors?.password?.message} />
+          </Field>
+          <Button onClick={handleSubmit(handleLogin)}>Login</Button>
         </div>
       </div>
     </div>

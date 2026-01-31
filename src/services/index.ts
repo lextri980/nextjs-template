@@ -1,4 +1,1 @@
-import ApiService from './api.service';
-import FetchService from './fetch.service';
-
-export { ApiService, FetchService };
+export { default as ApiService } from './apis/api.service';

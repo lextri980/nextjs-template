@@ -5,7 +5,6 @@
  .prettierignore
  .stylelintignore
  .eslintignore
- stories
  storybook-static
  *.log
  playwright-report

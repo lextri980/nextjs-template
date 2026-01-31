@@ -1,7 +1,9 @@
-import * as yup from 'yup';
+import { _Translator } from 'next-intl';
+import z from 'zod';
 
-// [Schema] Validate for login form
-export const loginSchema = yup.object().shape({
-  email: yup.string().email('Email form').required('Required field'),
-  password: yup.string().required('Required field'),
-});
+export const loginSchema = (t?: _Translator) =>
+  z.object({
+    username: z.string().min(1, t?.('M001')),
+    password: z.string().min(1, t?.('M001')),
+    remember: z.boolean().optional(),
+  });
