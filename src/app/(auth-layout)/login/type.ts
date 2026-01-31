@@ -1,6 +1,4 @@
-import { TLoginBodyReq } from '@/stores/auth-store/type';
+import z from 'zod';
+import { loginSchema } from './schema';
 
-/**
- * [Type] Login form
- */
-export type TLoginForm = TLoginBodyReq;
+export type TLoginForm = z.infer<ReturnType<typeof loginSchema>>;

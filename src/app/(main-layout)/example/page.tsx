@@ -1,11 +1,11 @@
 'use client';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux.hook';
-import { CommonActions } from '@/stores/common-store/common.reducer';
+import { RunActions } from '@/stores/action-store/action.reducer';
 import { ExampleActions } from '@/stores/example-store/example.reducer';
 import { useEffect } from 'react';
 import styles from './style.module.scss';
 
-function Example() {
+export default function Example() {
   // [Redux Hook]
   const exampleState = useAppSelector((state) => state.example);
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ function Example() {
    * Set loading state
    */
   useEffect(() => {
-    dispatch(CommonActions.setLoading(exampleState.loading));
+    dispatch(RunActions.setLoading(exampleState.loading));
   }, [exampleState]);
 
   /**
@@ -40,5 +40,3 @@ function Example() {
     </div>
   );
 }
-
-export default Example;

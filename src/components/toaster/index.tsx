@@ -1,8 +1,9 @@
-import CloseIcon from '@mui/icons-material/Close';
-import { TProps } from './type';
+import { XClose } from '@untitledui/icons';
 import { toast as sonnerToast } from 'sonner';
+import './style.scss';
+import { TToasterProps } from './type';
 
-export default function Toaster(props: TProps) {
+export default function Toaster(props: TToasterProps) {
   // [Props] Destructuring props
   const { message = 'This is a toast' } = props;
 
@@ -10,7 +11,7 @@ export default function Toaster(props: TProps) {
   return (
     <div className='toaster-container'>
       <div className='message-wrapper'>{message}</div>
-      <CloseIcon className='close-icon' onClick={() => sonnerToast.dismiss()} />
+      <XClose className='close-icon' onClick={() => sonnerToast.dismiss()} />
     </div>
   );
 }

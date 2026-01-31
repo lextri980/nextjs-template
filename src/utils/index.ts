@@ -1,3 +1,1 @@
-import StorageUtil from './storage.util';
-
-export { StorageUtil };
+export { default as StorageUtil } from './storage.util';

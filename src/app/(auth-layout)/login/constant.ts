@@ -1,9 +1,5 @@
-import { type DefaultValues } from 'react-hook-form';
-import { TLoginForm } from './type';
-
-// [Const] Default login form
-export const defaultLoginForm: DefaultValues<TLoginForm> = {
-  email: '',
+// [Const] Default values for login form
+export const LOGIN_FORM_DVALUES = {
+  username: '',
   password: '',
-  remember: false,
 };
