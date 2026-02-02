@@ -1,0 +1,22 @@
+:root {
+  --general-font-size: 15px;
+  --background: #ffffff;
+  --foreground: #171717;
+  --shadow-primary: #a7a7a7;
+  --input-border-primary: #0000003b;
+  --input-border-hover: #8f8f8f;
+  --input-border-focus: #646464;
+  --error-primary: #d32f2f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --shadow-primary: #787878;
+    --input-border-primary: #656565;
+    --input-border-hover: #858585;
+    --input-border-focus: #cdcdcd;
+    --error-primary: #d32f2f;
+  }
+}
