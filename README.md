@@ -4,6 +4,23 @@
 
 ## ⭕ Versions and Branches
 
+
+### 💥 [TQ Version]
+
+- **Developing version: 1.0 | [dev/tq-version-1.0](https://github.com/lextri980/nextjs-template/tree/dev/tq-version-1.0)**
+- **Beta version: 1.0 | [beta/tq-version](https://github.com/lextri980/nextjs-template/tree/beta/tq-version)**
+- **Stable version: 1.0 | [tq-version](https://github.com/lextri980/nextjs-template/tree/tq-version)**
+
+>**📦 Tech Stack**
+
+- **Core:** [`NextJS (16.1.6)`](https://nextjs.org/) [`ReactJS (19)`](https://reactjs.org/) [`TypeScript (5)`](https://www.typescriptlang.org/)
+- **UI/UX:** [`Tailwind CSS (4)`](https://tailwindcss.com/) [`Material UI (7)`](https://mui.com/) [`Sonner toast (2)`](https://sonner.emilkowal.ski/)
+- **Form:** [`React hook form (7)`](https://www.react-hook-form.com/) [`Zod (4)`](https://zod.dev/)
+- **Global state:** [`Zustand (2)`](https://zustand-demo.pmnd.rs/)
+- **API handler:** [`Tanstack Query (5)`](https://tanstack.com/query/latest)
+
+---
+
 ### 💥 [SA Version]
 
 - **Developing version: 3.0 | [dev/sa-version-3.1](https://github.com/lextri980/nextjs-template/tree/dev/sa-version-3.1)**
@@ -14,26 +31,9 @@
 
 - **Core:** [`NextJS (15.3.3)`](https://nextjs.org/) [`ReactJS (19)`](https://reactjs.org/) [`TypeScript (5)`](https://www.typescriptlang.org/)
 - **UI/UX:** [`Tailwind CSS (4)`](https://tailwindcss.com/) [`Material UI (7)`](https://mui.com/) [`Sonner toast (2)`](https://sonner.emilkowal.ski/)
-- **Form:** [`React hook form (7)`](https://www.react-hook-form.com/) [`Yup (1)`](https://github.com/jquense/yup)
+- **Form:** [`React hook form (7)`](https://www.react-hook-form.com/) [`Zod (4)`](https://zod.dev/)
 - **Global state:** [`Redux toolkit (2)`](https://redux-toolkit.js.org/)
 - **API handler:** [`Redux saga (1)`](https://redux-saga.js.org/)
-
----
-
-### 💥 [TQ Version]
-
-<!-- - **Developing version: 2.tq.0 | [version-2.tq.0](https://github.com/lextri980/nextjs-template/tree/version-2.tq.0)**
-- **Beta version: 2.tq.0 | [beta-tq-version](https://github.com/lextri980/nextjs-template/tree/beta-tq-version)**
-- **Stable version: 2.tq.0 | [tq-version](https://github.com/lextri980/nextjs-template/tree/tq-version)** -->
-*Coming soon...*
-
->**📦 Tech Stack**
-
-- **Core:** [`NextJS (15.3.3)`](https://nextjs.org/) [`ReactJS (19)`](https://reactjs.org/) [`TypeScript (5)`](https://www.typescriptlang.org/)
-- **UI/UX:** [`Tailwind CSS (4)`](https://tailwindcss.com/) [`Material UI (7)`](https://mui.com/) [`Sonner toast (2)`](https://sonner.emilkowal.ski/)
-- **Form:** [`React hook form (7)`](https://www.react-hook-form.com/) [`Yup (1)`](https://github.com/jquense/yup)
-- **Global state:** [`Redux toolkit (2)`](https://redux-toolkit.js.org/)
-- **API handler:** [`Tanstack Query (?)`](https://tanstack.com/query/latest)
 
 ---
 
